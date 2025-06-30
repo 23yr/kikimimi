@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Dark mode root styles */
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+/* Custom scrollbar for sidebar */
+.overflow-y-auto::-webkit-scrollbar {
+  width: 6px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+  @apply bg-slate-100/30 dark:bg-slate-700/30;
+  border-radius: 3px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  @apply bg-slate-400 dark:bg-slate-500;
+  border-radius: 3px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-500 dark:bg-slate-400;
+}
+
+/* Recording pulse animation */
+@keyframes recordingPulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 0 8px rgba(239, 68, 68, 0);
+  }
+}
+
+.animate-recording-pulse {
+  animation: recordingPulse 2s ease-in-out infinite;
+}
+
+.dark .markmap {
+  color: white !important;
+}
+
+/* サイドバー用: スライドアニメーション */
+@media (max-width: 1023px) {
+  .sidebar-slide {
+    transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+    will-change: transform;
+  }
+}
+
+/* サイドバーリストアイテムのパディング */
+.sidebar-list-item {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* 3点メニューのドロップダウン */
+.sidebar-menu-dropdown {
+  min-width: 120px;
+  box-shadow: 0 4px 16px 0 rgb(0 0 0 / 8%);
+  border-radius: 0.5rem;
+  z-index: 100;
+}
+
+/* ハンバーガーアイコンのホバー */
+#sidebar-hamburger:hover span {
+  background: #3b82f6; /* blue-500 */
+}
